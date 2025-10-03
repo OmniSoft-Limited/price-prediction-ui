@@ -1,6 +1,6 @@
 import "dotenv/config";
 import axios from "axios";
-import { RequestData } from "../types/FormData";
+import { RequestData, ResponseType } from "../utils/Preprocessor/types";
 
 const ROOT_URL = process.env.API_URL || null;
 const ENDPOINT = process.env.API_ENDPOINT || null;

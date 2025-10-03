@@ -1,8 +1,9 @@
 import { Currency } from "./Currency";
+import { SoftwareTypes } from "./SoftwareTypes";
 
-export interface RequestData {
+export interface RequestDataForm {
     name: string;
     softwarename: string,
-    data: number[],
+    data: SoftwareTypes,
     currency: Currency,
 }

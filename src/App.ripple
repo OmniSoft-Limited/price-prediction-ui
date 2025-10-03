@@ -4,16 +4,20 @@ import { Header } from './components/Header.ripple';
 import { Prediction } from './components/Prediction.ripple';
 import { About } from './components/About.ripple';
 import { Notes } from './components/Notes.ripple';
+import { Landing } from './components/Landing.ripple';
+import { Contact } from './components/Contact.ripple';
 
 export component App() {
     <div>
         <Header />
+        <Landing />
         <div>
             <Form />
             <Prediction />
         </div>
         <Notes />
         <About />
+        <Contact />
         <Footer />
     </div>
 }

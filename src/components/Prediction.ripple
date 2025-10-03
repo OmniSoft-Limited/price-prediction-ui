@@ -1,0 +1,5 @@
+export component Prediction() {
+    <div>
+        <h1>{'Prediction'}</h1>
+    </div>
+}

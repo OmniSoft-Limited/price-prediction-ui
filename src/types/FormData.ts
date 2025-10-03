@@ -1,6 +1,8 @@
-export interface FormData {
+import { Currency } from "./Currency";
+
+export interface RequestData {
     name: string;
     softwarename: string,
-    features: number[],
-    currency: string,
+    data: number[],
+    currency: Currency,
 }

@@ -6,6 +6,7 @@ import { About } from './components/About.ripple';
 import { Notes } from './components/Notes.ripple';
 import { Landing } from './components/Landing.ripple';
 import { Contact } from './components/Contact.ripple';
+import { Members } from './components/Members.ripple';
 
 export component App() {
     <div>
@@ -17,6 +18,7 @@ export component App() {
         </div>
         <Notes />
         <About />
+        <Members />
         <Contact />
         <Footer />
     </div>

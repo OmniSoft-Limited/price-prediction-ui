@@ -36,7 +36,9 @@ export enum ContentManagement {
     Null = 0,
     Workflow = 1,
     Pages_and_Media = 2,
-    Blog = 3
+    Blog = 3,
+    Pages = 2,
+    Media = 2,
 }
 
 export enum ExtraFeatures {
@@ -47,7 +49,9 @@ export enum ExtraFeatures {
     File_Handling = 4,
     Offile_Mode = 5,
     Data_Backup = 6,
-    Notification = 7
+    Notification = 7,
+    Search = 1,
+    Filter = 1,
 }
 
 export enum ThirdPartyService {

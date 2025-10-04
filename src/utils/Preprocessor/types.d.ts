@@ -10,5 +10,5 @@ export interface RequestData {
 export interface ResponseType {
 	prediction: number;
 	currency: Currency;
-	currency_price: number;
+	curency_price: number;
 }

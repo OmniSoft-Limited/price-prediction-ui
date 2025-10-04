@@ -6,8 +6,15 @@ import { RequestData  } from "./types";
 class Preprocessor {
     private data: RequestDataForm;
     private transformedData: RequestData;
+    
     constructor(data: RequestDataForm) {
         this.data = data;
+        this.transformedData = {
+			name: '',
+			softwarename: '',
+			currency: data.currency,
+			data: [],
+		};
     }
 
     public transform(): RequestData {

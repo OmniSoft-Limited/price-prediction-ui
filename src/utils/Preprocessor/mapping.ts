@@ -9,10 +9,32 @@ import {
 	TargetMarket,
 	ThirdPartyService,
 	UIUXDesign,
-    Performance,
-    Security,
-    Availability
+	Performance,
+	Security,
+	Availability,
 } from '../../types/enums';
+
+// --- Helper functions ---
+
+// Map a string to an enum value safely
+function mapEnumValue<T extends object>(enumObj: T, key: string, defaultValue: number): number {
+	return (enumObj as any)[key] ?? defaultValue;
+}
+
+// Average numeric arrays
+function average(values: number[]): number {
+	if (!values.length) return 0;
+	return values.reduce((a, b) => a + b, 0) / values.length;
+}
+
+// Map an array of strings to enum values and return average
+function mapEnumArray(enumObj: object, items: string[], defaultValue: number): number {
+	if (!Array.isArray(items) || !items.length) return defaultValue;
+	const mapped = items.map((item) => mapEnumValue(enumObj, item, defaultValue));
+	return average(mapped);
+}
+
+// --- Single-value mappings ---
 
 export function SoftwareTypeMapping(softwareType: string): number {
 	switch (softwareType) {
@@ -83,61 +105,6 @@ export function AdminDashboardMapping(adminDashboard: string): number {
 			return AdminDashboard.Professional;
 		default:
 			return AdminDashboard.Null;
-	}
-}
-
-export function ContentManagementMapping(contentManagement: string): number {
-	switch (contentManagement) {
-		case 'Null':
-			return ContentManagement.Null;
-		case 'Workflow':
-			return ContentManagement.Workflow;
-		case 'Pages_and_Media':
-			return ContentManagement.Pages_and_Media;
-		case 'Blog':
-			return ContentManagement.Blog;
-		default:
-			return ContentManagement.Null;
-	}
-}
-
-export function ExtraFeaturesMapping(extraFeatures: string): number {
-	switch (extraFeatures) {
-		case 'Null':
-			return ExtraFeatures.Null;
-		case 'Search_and_Filter':
-			return ExtraFeatures.Search_and_Filter;
-		case 'AI_ML_Module':
-			return ExtraFeatures.AI_ML_Module;
-		case 'Reporting_and_Analysis':
-			return ExtraFeatures.Reporting_and_Analysis;
-		case 'File_Handling':
-			return ExtraFeatures.File_Handling;
-		case 'Offile_Mode':
-			return ExtraFeatures.Offile_Mode;
-		case 'Data_Backup':
-			return ExtraFeatures.Data_Backup;
-		case 'Notification':
-			return ExtraFeatures.Notification;
-		default:
-			return ExtraFeatures.Null;
-	}
-}
-
-export function ThirdPartyServiceMapping(thirdPartyService: string): number {
-	switch (thirdPartyService) {
-		case 'Null':
-			return ThirdPartyService.Null;
-		case 'Analytics':
-			return ThirdPartyService.Analytics;
-		case 'Payment_Gateway':
-			return ThirdPartyService.Payment_Gateway;
-		case 'Map':
-			return ThirdPartyService.Map;
-		case 'Mail':
-			return ThirdPartyService.Mail;
-		default:
-			return ThirdPartyService.Null;
 	}
 }
 
@@ -219,4 +186,18 @@ export function AvailabilityMapping(availability: string): number {
 		default:
 			return Availability.Normal;
 	}
+}
+
+// --- Array mappings (averaged) ---
+
+export function ContentManagementMapping(contentManagement: string[]): number {
+	return mapEnumArray(ContentManagement, contentManagement, ContentManagement.Null);
+}
+
+export function ExtraFeaturesMapping(extraFeatures: string[]): number {
+	return mapEnumArray(ExtraFeatures, extraFeatures, ExtraFeatures.Null);
+}
+
+export function ThirdPartyServiceMapping(thirdPartyService: string[]): number {
+	return mapEnumArray(ThirdPartyService, thirdPartyService, ThirdPartyService.Null);
 }

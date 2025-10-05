@@ -14,7 +14,6 @@ export component App() {
         <Landing />
         <div>
             <Form />
-            <Prediction />
         </div>
         <Notes />
         <About />

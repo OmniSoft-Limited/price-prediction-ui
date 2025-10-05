@@ -1,7 +1,336 @@
+import { Currencies } from '../types/enums';
+import { effect, track } from 'ripple';
+import {Prediction} from './Prediction.ripple';
+import Preprocessor from '../utils/Preprocessor';
+
+async function getDefaultCurrency(): Promise<string> {
+	try {
+		const res = await fetch('https://ipwhois.app/json/');
+		const data = await res.json();
+		// 'data.currency.code' contains currency like 'USD'
+		return data.currency_code || 'USD';
+	} catch (err) {
+		console.error('Error fetching currency:', err);
+
+		return 'USD'; // fallback
+	}
+}
+
 export component Form() {
-    <div>
-        <form>
-            {'Form'}
-        </form>
-    </div>
+    let defaultCurrency = track("");
+    let name = track("");   
+    let softwarename = track("");
+    let softwareType = track("Web");
+    let industryDomain = track("Ecommerce");
+    let numUsers = track("");
+    let targetMarket = track("Local");
+    let adminDashboard = track("Null");
+    let contentManagement = track([]);
+    let extraFeatures = track([]);
+    let thirdPartyService = track([]);
+    let authentication = track("Null");
+    let dataMigration = track("Null");
+    let uiuxDesign = track("Basic");
+    let performance = track("Basic");
+    let security = track("Null");
+    let availability = track("Normal");
+    let timelineMonths = track("");
+    let currency = track("");
+
+    let formData = track({});
+    let finalData = track({});
+    let isSubmitted = track(false);
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        @formData = {
+            name: @name,
+            softwarename: @softwarename,
+            data: {
+                softwareType: @softwareType,
+                industryDomain: @industryDomain,
+                @numUsers,
+                @targetMarket,
+                @adminDashboard,
+                @contentManagement,
+                @extraFeatures,
+                @thirdPartyService,
+                @authentication,
+                @dataMigration,
+                @uiuxDesign,
+                @performance,
+                @security,
+                @availability,
+                timeline_months: @timelineMonths
+            },
+            currency: @currency
+        };
+        const preprocessor = new Preprocessor(@formData);
+        @finalData = preprocessor.transform();
+        @isSubmitted = true;
+    }
+
+    effect(() => {
+        getDefaultCurrency().then((currency) => {
+            @defaultCurrency = currency;
+        });
+    });
+	<div class='min-h-screen py-8 px-4' data-theme='sunset'><div class='max-w-3xl mx-auto'><div class='card bg-base-100 shadow-2xl'><div class='card-body'>
+		<h1 class='text-4xl font-bold text-center mb-2 bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent'>{'Price Prediction AI'}</h1>
+		<p class='text-center text-base-content/70 mb-6'>{'Fill in the details to get your software project estimate'}</p>
+
+		<div class='divider' />
+
+		<form class='flex flex-col gap-6'>
+			{/* Unknown: JSXEmptyExpression */}
+			<div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
+				<div class='form-control'>
+					<label class='label'>/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Basic Information */
+					<span class='label-text font-semibold'>{'Name'}</span></label>
+					<input type='text' name='name' onInput={(e) => @name = (e.target as HTMLInputElement).value}  placeholder='Enter your name' class='input input-bordered input-primary w-full focus:input-primary' />
+				</div>
+
+				<div class='form-control'>
+					<label class='label'><span class='label-text font-semibold'>{'Software Name'}</span></label>
+					<input type='text' name='softwarename' onInput={(e) => @softwarename = (e.target as HTMLInputElement).value}  placeholder='Enter software name' class='input input-bordered input-primary w-full focus:input-primary' />
+				</div>
+			</div>
+			{/* Unknown: JSXEmptyExpression */}
+			<div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
+				<div class='form-control'>
+					<label class='label'>/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Software Configuration */
+					<span class='label-text font-semibold'>{'Software Type'}</span></label>
+					<select name='data.softwareType' onChange={(e) => @softwareType = (e.target as HTMLInputElement).value}  class='select select-bordered select-primary w-full'>
+						<option value='Web' selected>{'Web'}</option>
+						<option value='Desktop'>{'Desktop'}</option>
+						<option value='Mobile'>{'Mobile'}</option>
+						<option value='Hybrid'>{'Hybrid'}</option>
+					</select>
+				</div>
+
+				<div class='form-control'>
+					<label class='label'><span class='label-text font-semibold'>{'Industry Domain'}</span></label>
+					<select name='data.industryDomain' onChange={(e) => @industryDomain = (e.target as HTMLInputElement).value}  class='select select-bordered select-primary w-full'>
+						<option value='Ecommerce'>{'Ecommerce'}</option>
+						<option value='Travel'>{'Travel'}</option>
+						<option value='Hotel_Management'>{'Hotel Management'}</option>
+						<option value='Restaurant_Management'>{'Restaurant Management'}</option>
+						<option value='Content_Management'>{'Content Management'}</option>
+						<option value='Social_Networking'>{'Social Networking'}</option>
+						<option value='Edtech'>{'Edtech'}</option>
+						<option value='Healthcare'>{'Healthcare'}</option>
+						<option value='Fintech'>{'Fintech'}</option>
+						<option value='Portfolio'>{'Portfolio'}</option>
+						<option value='Others'>{'Others'}</option>
+					</select>
+				</div>
+			</div>
+			{/* Unknown: JSXEmptyExpression */}
+			<div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
+				<div class='form-control'>
+					<label class='label'>/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Market Details */
+					<span class='label-text font-semibold'>{'Number of Users'}</span></label>
+					<input type='text' name='data.numUsers' placeholder='Expected user count' onInput={(e) => @numUsers = (e.target as HTMLInputElement).value}  class='input input-bordered input-primary w-full' />
+				</div>
+
+				<div class='form-control'>
+					<label class='label'><span class='label-text font-semibold'>{'Target Market'}</span></label>
+					<select name='data.targetMarket' class='select select-bordered select-primary w-full' onChange={(e) => @targetMarket = (e.target as HTMLInputElement).value}>
+						<option value='Local'>{'Local'}</option>
+						<option value='Global'>{'Global'}</option>
+						<option value='Both'>{'Both'}</option>
+					</select>
+				</div>
+			</div>
+			{/* Unknown: JSXEmptyExpression */}
+			<div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
+				<div class='form-control'>
+					<label class='label'>/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Dashboard & Management */
+					<span class='label-text font-semibold'>{'Admin Dashboard'}</span></label>
+					<select name='data.adminDashboard' class='select select-bordered select-primary w-full' onChange={(e) => @adminDashboard = (e.target as HTMLInputElement).value}>
+						<option value='Null'>{'Null'}</option>
+						<option value='Basic'>{'Basic'}</option>
+						<option value='Advanced'>{'Advanced'}</option>
+						<option value='Professional'>{'Professional'}</option>
+					</select>
+				</div>
+
+				<div class='form-control'>
+					<label class='label'>
+						<span class='label-text font-semibold'>{'Content Management'}</span>
+						<span class='label-text-alt text-primary'>{'Multi-select'}</span>
+					</label>
+					<select name='data.contentManagement' multiple class='select select-bordered select-primary w-full h-32' onChange={(e) => @contentManagement = (e.target as HTMLInputElement).value}>
+						<option value='Null'>{'Null'}</option>
+						<option value='Workflow'>{'Workflow'}</option>
+						<option value='Pages_and_Media'>{'Pages and Media'}</option>
+						<option value='Blog'>{'Blog'}</option>
+						<option value='Pages'>{'Pages'}</option>
+						<option value='Media'>{'Media'}</option>
+					</select>
+				</div>
+			</div>
+			{/* Unknown: JSXEmptyExpression */}
+			<div class='form-control'>
+				<label class='label'>
+					/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Features */
+					<span class='label-text font-semibold'>{'Extra Features'}</span>
+					<span class='label-text-alt text-primary'>{'Multi-select'}</span>
+				</label>
+				<select name='data.extraFeatures' multiple class='select select-bordered select-primary w-full h-40' onChange={(e) => @extraFeatures = (e.target as HTMLInputElement).value}>
+					<option value='Null'>{'Null'}</option>
+					<option value='Search_and_Filter'>{'Search and Filter'}</option>
+					<option value='AI_ML_Module'>{'AI/ML Module'}</option>
+					<option value='Reporting_and_Analysis'>{'Reporting and Analysis'}</option>
+					<option value='File_Handling'>{'File Handling'}</option>
+					<option value='Offile_Mode'>{'Offile Mode'}</option>
+					<option value='Data_Backup'>{'Data Backup'}</option>
+					<option value='Notification'>{'Notification'}</option>
+					<option value='Search'>{'Search'}</option>
+					<option value='Filter'>{'Filter'}</option>
+				</select>
+			</div>
+			{/* Unknown: JSXEmptyExpression */}
+			<div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
+				<div class='form-control'>
+					<label class='label'>
+						/* Unknown: JSXEmptyExpression */
+						/* Unknown: JSXEmptyExpression */
+						/* Unknown: JSXEmptyExpression */
+						/* Third Party & Authentication */
+						<span class='label-text font-semibold'>{'Third Party Services'}</span>
+						<span class='label-text-alt text-primary'>{'Multi-select'}</span>
+					</label>
+					<select name='data.thirdPartyService' multiple class='select select-bordered select-primary w-full h-32' onChange={(e) => @thirdPartyService = (e.target as HTMLInputElement).value}>
+						<option value='Null'>{'Null'}</option>
+						<option value='Analytics'>{'Analytics'}</option>
+						<option value='Payment_Gateway'>{'Payment Gateway'}</option>
+						<option value='Map'>{'Map'}</option>
+						<option value='Mail'>{'Mail'}</option>
+					</select>
+				</div>
+
+				<div class='form-control'>
+					<label class='label'><span class='label-text font-semibold'>{'Authentication'}</span></label>
+					<select name='data.authentication' class='select select-bordered select-primary w-full' onChange={(e) => @authentication = (e.target as HTMLInputElement).value}>
+						<option value='Null'>{'Null'}</option>
+						<option value='Basic'>{'Basic'}</option>
+						<option value='Social'>{'Social'}</option>
+						<option value='Multi_Factor'>{'Multi-Factor'}</option>
+						<option value='Biometric'>{'Biometric'}</option>
+					</select>
+				</div>
+			</div>
+			{/* Unknown: JSXEmptyExpression */}
+			<div class='grid grid-cols-1 md:grid-cols-3 gap-4'>
+				<div class='form-control'>
+					<label class='label'>/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Design & Performance */
+					<span class='label-text font-semibold'>{'Data Migration'}</span></label>
+					<select name='data.dataMigration' class='select select-bordered select-primary w-full' onChange={(e) => @dataMigration = (e.target as HTMLInputElement).value}>
+						<option value='Null'>{'Null'}</option>
+						<option value='No'>{'No'}</option>
+						<option value='Yes'>{'Yes'}</option>
+					</select>
+				</div>
+
+				<div class='form-control'>
+					<label class='label'><span class='label-text font-semibold'>{'UI/UX Design'}</span></label>
+					<select name='data.uiuxDesign' class='select select-bordered select-primary w-full' onChange={(e) => @uiuxDesign = (e.target as HTMLInputElement).value}>
+						<option value='Basic'>{'Basic'}</option>
+						<option value='Advanced'>{'Advanced'}</option>
+						<option value='Custom'>{'Custom'}</option>
+					</select>
+				</div>
+
+				<div class='form-control'>
+					<label class='label'><span class='label-text font-semibold'>{'Performance'}</span></label>
+					<select name='data.performance' class='select select-bordered select-primary w-full' onChange={(e) => @performance = (e.target as HTMLInputElement).value}>
+						<option value='Basic'>{'Basic'}</option>
+						<option value='Medium'>{'Medium'}</option>
+						<option value='High'>{'High'}</option>
+					</select>
+				</div>
+			</div>
+			{/* Unknown: JSXEmptyExpression */}
+			<div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
+				<div class='form-control'>
+					<label class='label'>/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Security & Availability */
+					<span class='label-text font-semibold'>{'Security'}</span></label>
+					<select name='data.security' class='select select-bordered select-primary w-full' onChange={(e) => @security = (e.target as HTMLInputElement).value}>
+						<option value='Null'>{'Null'}</option>
+						<option value='Standard'>{'Standard'}</option>
+						<option value='High'>{'High'}</option>
+					</select>
+				</div>
+
+				<div class='form-control'>
+					<label class='label'><span class='label-text font-semibold'>{'Availability'}</span></label>
+					<select name='data.availability' class='select select-bordered select-primary w-full' onChange={(e) => @availability = (e.target as HTMLInputElement).value}>
+						<option value='Normal'>{'Normal'}</option>
+						<option value='Always'>{'Always'}</option>
+					</select>
+				</div>
+			</div>
+
+            <div class='form-control'>
+					<label class='label'>/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Unknown: JSXEmptyExpression */
+					/* Basic Information */
+					<span class='label-text font-semibold'>{'Timeline Months'}</span></label>
+					<input type='text' name='name' onInput={(e) => @timelineMonths = (e.target as HTMLInputElement).value}  placeholder='Enter timeline months' class='input input-bordered input-primary w-full focus:input-primary' />
+			</div>
+
+			{/* Unknown: JSXEmptyExpression */}
+			<div class='form-control'>
+				<label class='label'>/* Unknown: JSXEmptyExpression */
+				/* Unknown: JSXEmptyExpression */
+				/* Unknown: JSXEmptyExpression */
+				/* Currency */
+				<span class='label-text font-semibold'>{'Currency'}</span></label>
+				<select name='data.availability' class='select select-bordered select-primary w-full' onChange={(e) => @currency = (e.target as HTMLInputElement).value}>
+                    for (const currency of Currencies) {
+					if (currency === @defaultCurrency) {
+						<option value={currency} selected>{currency}</option>
+					} else {
+						<option value={currency}>{currency}</option>
+					}
+				}</select>
+			</div>
+
+			<div class='divider' />
+			{/* Unknown: JSXEmptyExpression */}
+			<button type='submit' class='btn btn-primary btn-lg w-full text-lg shadow-lg hover:shadow-xl transition-all'
+                onClick={(e) => handleSubmit(e)}
+            >
+				<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 mr-2' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z' /></svg>
+				{'Get Price Prediction'}
+			</button>
+		</form>
+	</div></div>
+    if (@isSubmitted) {
+        <Prediction data={@finalData} />
+    }
+    </div></div>
 }

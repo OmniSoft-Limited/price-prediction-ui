@@ -1,5 +1,97 @@
-export component Prediction() {
-    <div>
-        <h1>{'Prediction'}</h1>
+import { effect, track } from 'ripple';
+import { predictPrice } from '../utils/callapi';
+
+export component Prediction(props: {data: any}) {
+    let data = track({});
+    let result = track({
+        prediction: 0,
+        currency: "",
+        curency_price: ""
+    });
+
+    effect(async () => {
+        @data = props.data;
+        @result = await predictPrice(@data);
+    });
+
+    <div class="min-h-screen flex items-center justify-center p-4" data-theme="sunset">
+      <div class="max-w-2xl w-full">
+        <div class="card bg-base-100 shadow-2xl">
+          <div class="card-body items-center text-center p-8 md:p-12">
+            {/* Success Icon */}
+            <div class="mb-6">
+              <div class="w-20 h-20 bg-gradient-to-br from-orange-400 to-rose-500 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Title */}
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent">
+              {'Prediction'}
+            </h1>
+
+            {/* Result */}
+            <div class="rounded-2xl p-8 md:p-10 w-full mt-4 shadow-inner">
+              <p class="text-base-content/70 text-lg mb-3 font-medium">
+                {'The predicted price is'}
+              </p>
+              <div class="flex items-center justify-center gap-2">
+                <span class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent">
+                  {parseInt(@result.curency_price).toLocaleString()}
+                </span>
+                <span class="text-3xl md:text-4xl font-bold text-primary">
+                  {@result.currency}
+                </span>
+              </div>
+            </div>
+
+            {/* Additional Info */}
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 w-full">
+              <div class="flex-1 bg-base-200 rounded-xl p-4 text-center">
+                <div class="text-2xl mb-1">{'📊'}</div>
+                <p class="text-sm font-semibold text-base-content">{'AI Powered'}</p>
+                <p class="text-xs text-base-content/60">{'Advanced Analysis'}</p>
+              </div>
+              <div class="flex-1 bg-base-200 rounded-xl p-4 text-center">
+                <div class="text-2xl mb-1">{'⚡'}</div>
+                <p class="text-sm font-semibold text-base-content">{'Instant Result'}</p>
+                <p class="text-xs text-base-content/60">{'Real-time Estimation'}</p>
+              </div>
+              <div class="flex-1 bg-base-200 rounded-xl p-4 text-center">
+                <div class="text-2xl mb-1">{'🎯'}</div>
+                <p class="text-sm font-semibold text-base-content">{'High Accuracy'}</p>
+                <p class="text-xs text-base-content/60">{'Data-driven Model'}</p>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full">
+              <button class="btn btn-primary flex-1 btn-lg shadow-lg hover:shadow-xl transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                </svg>
+                {'Download Report'}
+              </button>
+              <button class="btn btn-outline btn-primary flex-1 btn-lg hover:shadow-lg transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                {'New Prediction'}
+              </button>
+            </div>
+
+            {/* Footer Note */}
+            <p class="text-xs text-base-content/50 mt-8">
+              {'This is an estimated price based on your requirements. Final pricing may vary based on detailed specifications.'}
+            </p>
+          </div>
+        </div>
+
+        {/* Background Decoration */}
+        <div class="absolute top-10 left-10 w-32 h-32 bg-orange-200/30 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 right-10 w-40 h-40 bg-rose-200/30 rounded-full blur-3xl -z-10"></div>
+      </div>
     </div>
 }

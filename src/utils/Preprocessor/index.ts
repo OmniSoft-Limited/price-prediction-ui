@@ -22,6 +22,7 @@ class Preprocessor {
         this.transformedData.softwarename = this.data.softwarename;
         this.transformedData.currency = this.data.currency;
 
+
         this.transformedData.data = [
             SoftwareTypeMapping(this.data.data.softwareType),
             IndustryDomainMapping(this.data.data.industryDomain),

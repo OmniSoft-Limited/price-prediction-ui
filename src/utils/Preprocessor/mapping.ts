@@ -17,18 +17,18 @@ import {
 // --- Helper functions ---
 
 // Map a string to an enum value safely
-function mapEnumValue<T extends object>(enumObj: T, key: string, defaultValue: number): number {
+export function mapEnumValue<T extends object>(enumObj: T, key: string, defaultValue: number): number {
 	return (enumObj as any)[key] ?? defaultValue;
 }
 
 // Average numeric arrays
-function average(values: number[]): number {
+export function average(values: number[]): number {
 	if (!values.length) return 0;
 	return values.reduce((a, b) => a + b, 0) / values.length;
 }
 
 // Map an array of strings to enum values and return average
-function mapEnumArray(enumObj: object, items: string[], defaultValue: number): number {
+export function mapEnumArray(enumObj: object, items: string[], defaultValue: number): number {
 	if (!Array.isArray(items) || !items.length) return defaultValue;
 	const mapped = items.map((item) => mapEnumValue(enumObj, item, defaultValue));
 	return average(mapped);

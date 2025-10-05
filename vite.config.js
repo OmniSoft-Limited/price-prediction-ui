@@ -5,6 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
 	plugins: [ripple(), tailwindcss()],
 	server: {
-		port: 3000
+		port: 3000,
+		allowedHosts: [
+			'involved-clock-investing-madrid.trycloudflare.com'
+		]
 	}
 });

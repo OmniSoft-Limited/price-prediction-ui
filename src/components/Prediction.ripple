@@ -1,5 +1,6 @@
 import { effect, track } from 'ripple';
 import { predictPrice } from '../utils/callapi';
+import Notify from 'notifier-mycin';
 
 export component Prediction(props: {data: any}) {
     let data = track({});
@@ -10,9 +11,15 @@ export component Prediction(props: {data: any}) {
     });
 
     effect(async () => {
+      try {
         @data = props.data;
         console.log("data", @data);
         @result = await predictPrice(@data);
+        Notify.success('Price prediction successful!');
+      } catch (err) {
+        console.error(err);
+        Notify.error('Something Went Wrong! Please try again later.');
+      }
     });
 
     <div class="min-h-screen flex items-center justify-center p-4" data-theme="sunset">
@@ -67,21 +74,7 @@ export component Prediction(props: {data: any}) {
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full">
-              <button class="btn btn-primary flex-1 btn-lg shadow-lg hover:shadow-xl transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
-                </svg>
-                {'Download Report'}
-              </button>
-              <button class="btn btn-outline btn-primary flex-1 btn-lg hover:shadow-lg transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-                {'New Prediction'}
-              </button>
-            </div>
+           
           </div>
         </div>
 

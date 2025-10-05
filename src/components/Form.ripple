@@ -4,6 +4,7 @@ import { Prediction } from './Prediction.ripple';
 import { Notes } from './Notes.ripple';
 import Preprocessor from '../utils/Preprocessor';
 
+
 async function getDefaultCurrency(): Promise<string> {
 	try {
 		const res = await fetch('https://ipwhois.app/json/');
@@ -96,7 +97,7 @@ export component Form() {
 						/* Unknown: JSXEmptyExpression */
 						/* Basic Information */
 						<span class='label-text font-semibold'>{'Name'}</span></label>
-						<input type='text' name='name' onInput={(e) => @name = (e.target as HTMLInputElement).value} placeholder='Enter your name' class='input input-bordered input-primary w-full focus:input-primary' />
+						<input type='text' name='name' onInput={(e) => @name = (e.target as HTMLInputElement).value} placeholder='Enter your name' class='input input-bordered input-primary w-full focus:input-primary' required />
 					</div>
 
 					<div class='form-control'>

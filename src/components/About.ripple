@@ -1,5 +1,129 @@
 export component About() {
-    <div>
-        <h1>{'About'}</h1>
-    </div>
+	const handleAPIKeyRequest = () => {
+		window.open('https://wa.me/8801326251753?text=Hi%2C%20I%20would%20like%20to%20request%20an%20API%20key%20for%20PriceAI', '_blank');
+	};
+
+	<div class='py-16 md:py-24 bg-base-100/50' data-theme='sunset'><div class='container mx-auto px-4'>
+		{/* Unknown: JSXEmptyExpression */}
+		<div class='text-center mb-16'>
+			/* Section Header */
+			<h2 class='text-4xl md:text-5xl font-bold text-primary mb-4'>{'About'}</h2>
+			<div class='w-24 h-1 bg-primary mx-auto' />
+		</div>
+
+		<div class='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12'>
+			{/* Unknown: JSXEmptyExpression */}
+			<div class='card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300'>/* PriceAI Section */
+			<div class='card-body p-6 md:p-8'>
+				{/* Unknown: JSXEmptyExpression */}
+				<div class='flex items-center gap-3 mb-6'>
+					<div class='w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0'><svg xmlns='http://www.w3.org/2000/svg' class='h-7 w-7 text-primary' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' /></svg></div>
+					<h3 class='text-2xl md:text-3xl font-bold text-primary'>{'PriceAI'}</h3>
+				</div>
+
+				<div class='divider my-4' />
+				{/* Unknown: JSXEmptyExpression */}
+				<div class='space-y-4'>
+					<div class='flex gap-3'>
+						/* Content */
+						<span class='text-primary font-bold flex-shrink-0 mt-1'>{'•'}</span>
+						<p class='text-base-content leading-relaxed'>{'An intelligent software price prediction AI trained on real-world software pricing data based on comprehensive requirements analysis'}</p>
+					</div>
+
+					<div class='flex gap-3'>
+						<span class='text-primary font-bold flex-shrink-0 mt-1'>{'•'}</span>
+						<p class='text-base-content leading-relaxed'>{'Built upon a robust dataset containing 1000+ real-world software projects to ensure accurate predictions'}</p>
+					</div>
+
+					<div class='flex gap-3'>
+						<span class='text-primary font-bold flex-shrink-0 mt-1'>{'•'}</span>
+						<div class='leading-relaxed'>
+							<p class='text-base-content mb-2'>{'Training repository:'}</p>
+							<a href='https://github.com/OmniSoft-Limited/price-prediction-model/' target='_blank' rel='noopener noreferrer' class='link link-primary text-sm break-all hover:underline'>{'github.com/OmniSoft-Limited/price-prediction-model'}</a>
+						</div>
+					</div>
+
+					<div class='flex gap-3'>
+						<span class='text-primary font-bold flex-shrink-0 mt-1'>{'•'}</span>
+						<div class='leading-relaxed'>
+							<p class='text-base-content mb-2'>{'Backend API built with FastAPI and available as open source:'}</p>
+							<a href='https://github.com/OmniSoft-Limited/price-ml-api' target='_blank' rel='noopener noreferrer' class='link link-primary text-sm break-all hover:underline'>{'github.com/OmniSoft-Limited/price-ml-api'}</a>
+						</div>
+					</div>
+
+					<div class='flex gap-3'>
+						<span class='text-primary font-bold flex-shrink-0 mt-1'>{'•'}</span>
+						<p class='text-base-content leading-relaxed'>{'The API is available for testing and commercial applications'}</p>
+					</div>
+
+					<div class='flex gap-3'>
+						<span class='text-primary font-bold flex-shrink-0 mt-1'>{'•'}</span>
+						<p class='text-base-content leading-relaxed'>{'All requested data is monitored and analyzed to continuously improve user experience'}</p>
+					</div>
+				</div>
+
+				<div class='divider my-6' />
+				{/* Unknown: JSXEmptyExpression */}
+				<button onClick={handleAPIKeyRequest} class='btn btn-primary btn-block shadow-lg hover:shadow-xl transition-all'>
+					<svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5 mr-2' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z' /></svg>
+					{'Request API Key'}
+				</button>
+				<p class='text-xs text-center text-base-content/60 mt-2'>{'Contact us via WhatsApp to get your API key'}</p>
+			</div></div>
+			{/* Unknown: JSXEmptyExpression */}
+			<div class='card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300'>/* Omnisoft Section */
+			<div class='card-body p-6 md:p-8'>
+				{/* Unknown: JSXEmptyExpression */}
+				<div class='flex items-center gap-3 mb-6'>
+					<div class='w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0'><svg xmlns='http://www.w3.org/2000/svg' class='h-7 w-7 text-primary' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' /></svg></div>
+					<h3 class='text-2xl md:text-3xl font-bold text-primary'>{'Omnisoft Limited'}</h3>
+				</div>
+
+				<div class='divider my-4' />
+				{/* Unknown: JSXEmptyExpression */}
+				<div class='space-y-4'>
+					<div class='flex gap-3'>
+						/* Content */
+						<span class='text-primary font-bold flex-shrink-0 mt-1'>{'•'}</span>
+						<p class='text-base-content leading-relaxed'>{'A Bangladeshi global software company specializing in comprehensive digital solutions including websites, mobile apps, desktop GUIs, APIs, backend systems, cloud services, UI/UX design, graphic design, deployment, content management, DevOps, automation, AI/ML training, AI tools, AI agents, RAGs, and MCPs'}</p>
+					</div>
+
+					<div class='flex gap-3'>
+						<span class='text-primary font-bold flex-shrink-0 mt-1'>{'•'}</span>
+						<p class='text-base-content leading-relaxed'>{'Conducts cutting-edge research in artificial intelligence, machine learning, and recommendation systems while building innovative tools and libraries for developer communities worldwide'}</p>
+					</div>
+
+					<div class='divider my-6' />
+					{/* Unknown: JSXEmptyExpression */}
+					<div class='bg-base-200 rounded-lg p-5'>
+						/* Leadership */
+						<h4 class='font-bold text-lg text-primary mb-4'>{'Leadership Team'}</h4>
+
+						<div class='space-y-4'>
+							<div class='flex items-start gap-4'>
+								<div class='avatar placeholder'><div class='bg-primary text-primary-content rounded-full w-12 h-12'><img src='https://scontent.fdac39-1.fna.fbcdn.net/v/t39.30808-6/548016713_1330914978387496_1304983791287282778_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=EWoucln6GcQQ7kNvwFmIBRN&_nc_oc=AdnTb-xHt0BZ0QYVCMecBylyuq61RYVZ83WkOPH4NWrJkFRTcU8Wzy2MY-3xU7jtPOk&_nc_zt=23&_nc_ht=scontent.fdac39-1.fna&_nc_gid=oBYpASlnLQY38PDxO7_Mrg&oh=00_Afd8FPJE77EyKZKXe7w0DOTyP_Er7QVNFyGjn0_euKp6lg&oe=68E8AEDC' alt='Alamin Khan' class='w-12 h-12 rounded-full' /></div></div>
+								<div>
+									<p class='font-bold text-base-content'>{'Alamin Khan'}</p>
+									<p class='text-sm text-primary font-semibold'>{'Chief Executive Officer'}</p>
+								</div>
+							</div>
+
+							<div class='divider my-2' />
+
+							<div class='flex items-start gap-4'>
+								<div class='avatar placeholder'><div class='bg-primary text-primary-content rounded-full w-12 h-12'><img src='https://scontent.fdac39-1.fna.fbcdn.net/v/t39.30808-6/462319262_895290095848097_4901058129408691923_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHuWv8nsDKYHbb8l8GDpLnZdbzux1ReylF1vO7HVF7KUbTUbCKIXaeuR9Vg8MZtOobmmoJjkotMhhX-AnufWcwS&_nc_ohc=69KokNxPA38Q7kNvwFNZap1&_nc_oc=AdnlH26iQqpXrk4tQSg3kuCxZMeYdBub6pGFTXb_2MMv3RAluFtG82szYAUF6OwZ8_Y&_nc_zt=23&_nc_ht=scontent.fdac39-1.fna&_nc_gid=rgCX9SwKcW_Q7VURvLQWcQ&oh=00_Afeif9o-9SKdUPw9GpLhNJEf9N5mF7jznzlkM7BbdkLVHg&oe=68E8DA87' alt='Tahcin Ul Karim (Mycin)' class='w-12 h-12 rounded-full' /></div></div>
+								<div>
+									<p class='font-bold text-base-content'>{'Tahcin Ul Karim (Mycin)'}</p>
+									<p class='text-sm text-primary font-semibold'>{'Chief Technology Officer'}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class='divider my-6' />
+				
+			</div></div>
+		</div>
+	</div></div>
 }

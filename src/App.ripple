@@ -5,6 +5,7 @@ import { Prediction } from './components/Prediction.ripple';
 import { About } from './components/About.ripple';
 import { Contact } from './components/Contact.ripple';
 import { Members } from './components/Members.ripple';
+import { TechStack } from './components/TechStack.ripple';
 
 export component App() {
     <div>
@@ -15,6 +16,7 @@ export component App() {
         <About />
         {/* <Members /> */} // Maybe Later
         <Contact />
+        <TechStack />
         <Footer />
     </div>
 }

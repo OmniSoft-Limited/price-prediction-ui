@@ -28,9 +28,12 @@
     "vite-plugin-ripple": "^0.2.29"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-typescript": "^7.27.1",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.6.2",
     "axios": "^1.12.2",
+    "babel-jest": "^30.2.0",
     "dotenv": "^17.2.3",
     "jest": "^30.2.0",
     "notifier-mycin": "^2.0.4",

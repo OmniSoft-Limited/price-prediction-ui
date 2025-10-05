@@ -4,21 +4,17 @@ const tsJestTransformCfg = createDefaultPreset().transform;
 
 /** @type {import("jest").Config} */
 export default {
-  preset: 'ts-jest/presets/default-esm',  // ✅ ESM support
-  testEnvironment: "jsdom",                // ✅ Ripple uses DOM
-  extensionsToTreatAsEsm: ['.ts', '.tsx'], // ✅ important for ESM
+  preset: 'ts-jest/presets/default-esm',
+  testEnvironment: 'jsdom',
+  extensionsToTreatAsEsm: ['.ts', '.tsx'],
   transform: {
     ...tsJestTransformCfg,
+    '^.+\\.tsx?$': ['ts-jest', { useESM: true, tsconfig: 'tsconfig.json' }],
   },
-  globals: {
-    'ts-jest': {
-      useESM: true,                       // ✅ compile TypeScript as ESM
-      tsconfig: 'tsconfig.json'
-    }
-  },
+  setupFiles: ["<rootDir>/jest.setup.ts"], 
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
+  transformIgnorePatterns: ['node_modules/(?!ripple)'],
   moduleNameMapper: {
-    // optional: if ripple uses JSX import source mapping
     '^ripple(.*)$': '<rootDir>/node_modules/ripple$1',
   },
 };

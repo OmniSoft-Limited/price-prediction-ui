@@ -15,6 +15,7 @@ export component App() {
         </div>
         <About />
         {/* <Members /> */} // Maybe Later
+        <hr />
         <Contact />
         <TechStack />
         <Footer />

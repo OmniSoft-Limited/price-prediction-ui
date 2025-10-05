@@ -4,8 +4,8 @@ import { RequestData, ResponseType } from "../utils/Preprocessor/types";
 export const data: RequestData = {
 	name: 'test',
 	softwarename: 'test',
-	data: [3, 4, 750.0, 2, 1, 1.0, 3, 1, 3, 0, 3.0, 2, 2, 1.0, 9],
-	currency: 'USD',
+	data: [1, 7, 50.5, 3, 2, 0, 0, 0, 3, 1, 3, 3, 2, 2, 5],
+	currency: 'BDT',
 };
 
 async function testApiEndpoint() {
@@ -17,5 +17,5 @@ test('Test the API Endpoint', async () => {
     const response = await testApiEndpoint();
     expect(typeof response.prediction).toBe('number');
     expect(typeof response.curency_price).toBe('number');
-    expect(response.currency).toBe('USD');
+    expect(response.currency).toBe('BDT');
 });

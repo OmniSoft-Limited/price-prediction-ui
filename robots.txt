@@ -1,0 +1,19 @@
+# OmniSoft Limited - Price Prediction Frontend
+# Robots.txt for controlling web crawler access
+
+# Apply rules to all bots
+User-agent: *
+
+# Disallow crawling of sensitive or non-public folders
+Disallow: /admin/
+Disallow: /config/
+Disallow: /private/
+Disallow: /scripts/
+Disallow: /tests/
+Disallow: /node_modules/
+
+# Allow everything else (public pages)
+Allow: /
+
+# Sitemap location (helps bots find pages faster)
+Sitemap: https://yourdomain.com/sitemap.xml

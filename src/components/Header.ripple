@@ -1,7 +1,11 @@
+import { LandingPage } from './LandingPage.ripple';
+
 export component Header() {
 	<div class='min-h-screen ' data-theme='sunset'>
 		{/* Unknown: JSXEmptyExpression */}
 		<div class='navbar bg-base-100 shadow-lg sticky top-0 z-50'>
+			/* Unknown: JSXEmptyExpression */
+			/* Unknown: JSXEmptyExpression */
 			/* Unknown: JSXEmptyExpression */
 			/* Navbar */
 			<div class='navbar-start'>
@@ -37,7 +41,7 @@ export component Header() {
 				</div>
 				{/* Unknown: JSXEmptyExpression */}
 				<a class='btn btn-ghost text-2xl font-bold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent'>
-					<img src="/src/assets/favicon.ico" alt="logo" class="h-10 w-10 mr-2" />
+					<img src='/src/assets/favicon.ico' alt='logo' class='h-10 w-10 mr-2' />
 					{'Omnisoft'}
 				</a>
 			</div>
@@ -85,18 +89,6 @@ export component Header() {
 			</div>
 		</div>
 		{/* Unknown: JSXEmptyExpression */}
-		<div class='container mx-auto p-8'>
-			<div class='hero min-h-[calc(100vh-4rem)]'><div class='hero-content text-center'><div class='max-w-2xl'>
-				/* Unknown: JSXEmptyExpression */
-				/* Sample Content Area */
-				<h1 class='text-5xl font-bold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent mb-6'>{'Welcome to PriceAI'}</h1>
-				<p class='text-lg text-base-content/70 mb-8'>{'Get accurate software project pricing predictions powered by advanced AI technology. Fast, reliable, and transparent estimates for your next project.'}</p>
-				<div class='flex flex-col sm:flex-row gap-4 justify-center'>
-					<button class='btn btn-primary btn-lg shadow-lg hover:shadow-xl transition-all'>{'Start Prediction'}</button>
-					<button class='btn btn-outline btn-primary btn-lg hover:shadow-lg transition-all'>{'Learn More'}</button>
-				</div>
-			</div></div></div>
-			<hr />
-		</div>
+		<LandingPage />
 	</div>
 }

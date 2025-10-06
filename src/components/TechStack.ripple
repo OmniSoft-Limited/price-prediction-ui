@@ -1,5 +1,219 @@
 export component TechStack() {
-    <div>
-        <h1>{'Tech Stack'}</h1>
+  // Tech stack data structure
+  const techStacks = {
+    modelTraining: [
+        { name: 'Python', icon: '/src/assets/techstack/training/python.svg' },
+        { name: 'Scikit-learn', icon: '/src/assets/techstack/training/sklearn.svg' },
+        { name: 'NumPy', icon: '/src/assets/techstack/training/numpy.svg' },
+        { name: 'Pandas', icon: '/src/assets/techstack/training/pandas.svg' },
+        { name: 'Matplotlib', icon: '/src/assets/techstack/training/matplotlib.svg' },
+        { name: 'Seaborn', icon: '/src/assets/techstack/training/seaborn.svg' },
+        { name: 'JupyterLab', icon: '/src/assets/techstack/training/jupyter.svg' },
+        { name: 'Onnxruntime', icon: '/src/assets/techstack/training/onnx.svg' },
+    ],
+    backend: [
+        { name: 'Python', icon: '/src/assets/techstack/backend/python.svg' },
+        { name: 'FastAPI', icon: '/src/assets/techstack/backend/fastapi.svg' },
+        { name: 'NumPy', icon: '/src/assets/techstack/backend/numpy.svg' },
+        { name: 'Cryptography', icon: '/src/assets/techstack/backend/cryptography.svg' },
+        { name: 'PyTest', icon: '/src/assets/techstack/backend/pytest.svg' },
+        { name: 'MongoDB', icon: '/src/assets/techstack/backend/mongodb.svg' },
+        { name: 'PostgreSQL', icon: '/src/assets/techstack/backend/postgresql.svg' },
+        { name: 'Redis', icon: '/src/assets/techstack/backend/redis.svg' },
+        { name: 'Onnxruntime', icon: '/src/assets/techstack/backend/onnx.svg' },
+    ],
+    frontend: [
+        { name: 'TypeScript', icon: '/src/assets/techstack/frontend/typescript.svg' },
+        { name: 'Ripple', icon: '/src/assets/techstack/frontend/ripple.svg' },
+        { name: 'Tailwind CSS', icon: '/src/assets/techstack/frontend/tailwind.svg' },
+        { name: 'DaisyUI', icon: '/src/assets/techstack/frontend/daisyui.svg' },
+        { name: 'PocketBase', icon: '/src/assets/techstack/frontend/pocketbase.svg' },
+        { name: 'Axios', icon: '/src/assets/techstack/frontend/axios.svg' },
+        { name: 'Jest', icon: '/src/assets/techstack/frontend/jest.svg' },
+        { name: 'Vite', icon: '/src/assets/techstack/frontend/vite.svg' },
+        { name: 'Babel', icon: '/src/assets/techstack/frontend/babel.svg' },
+    ],
+    devops: [
+        { name: 'Git', icon: '/src/assets/techstack/devops/git.svg' },
+        { name: 'Docker', icon: '/src/assets/techstack/devops/docker.svg' },
+        { name: 'Kubernetes', icon: '/src/assets/techstack/devops/kubernetes.svg' },
+        { name: 'GitHub Actions', icon: '/src/assets/techstack/devops/github-actions.svg' },
+        { name: 'Jenkins', icon: '/src/assets/techstack/devops/jenkins.svg' },
+        { name: 'Nginx', icon: '/src/assets/techstack/devops/nginx.svg' },
+        { name: 'Linux', icon: '/src/assets/techstack/devops/linux.svg' },
+        { name: 'Dokploy', icon: '/src/assets/techstack/devops/dokploy.svg' },
+        { name: 'Vercel', icon: '/src/assets/techstack/devops/vercel.svg' },
+    ],
+  };
+
+  <div class="py-16 md:py-24 bg-base-100/50" data-theme="sunset">
+    <div class="container mx-auto px-4">
+      {/* Section Header */}
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4">
+          {'Tech Stack'}
+        </h2>
+        <p class="text-base-content/70 text-lg max-w-2xl mx-auto">
+          {'Built with modern, industry-standard technologies to ensure performance, scalability, and reliability'}
+        </p>
+        <div class="w-24 h-1 bg-primary mx-auto mt-6"></div>
+      </div>
+
+      {/* Tech Stack Grid */}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Model Training */}
+        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div class="card-body p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-primary">
+                {'Model Training'}
+              </h3>
+            </div>
+
+            <div class="divider mt-0 mb-6"></div>
+
+            <div class="flex flex-wrap justify-center gap-6">
+              for (const tech of techStacks.modelTraining) {
+                <div class="flex flex-col items-center gap-3 p-4 rounded-lg hover:bg-base-200 transition-all duration-300 group min-w-28">
+                  <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <img 
+                      src={tech.icon} 
+                      alt={tech.name}
+                      class="w-full h-full object-contain p-1"
+                    />
+                  </div>
+                  <p class="text-sm font-semibold text-center text-base-content group-hover:text-primary transition-colors duration-300">
+                    {tech.name}
+                  </p>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        {/* Backend */}
+        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div class="card-body p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-primary">
+                {'Backend'}
+              </h3>
+            </div>
+
+            <div class="divider mt-0 mb-6"></div>
+
+            <div class="flex flex-wrap justify-center gap-6">
+              for (const tech of techStacks.backend) {
+                <div class="flex flex-col items-center gap-3 p-4 rounded-lg hover:bg-base-200 transition-all duration-300 group min-w-28">
+                  <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <img 
+                      src={tech.icon} 
+                      alt={tech.name}
+                      class="w-full h-full object-contain p-1"
+                    />
+                  </div>
+                  <p class="text-sm font-semibold text-center text-base-content group-hover:text-primary transition-colors duration-300">
+                    {tech.name}
+                  </p>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        {/* Frontend */}
+        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div class="card-body p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-primary">
+                {'Frontend'}
+              </h3>
+            </div>
+
+            <div class="divider mt-0 mb-6"></div>
+
+            <div class="flex flex-wrap justify-center gap-6">
+              for (const tech of techStacks.frontend) {
+                <div class="flex flex-col items-center gap-3 p-4 rounded-lg hover:bg-base-200 transition-all duration-300 group min-w-28">
+                  <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <img 
+                      src={tech.icon} 
+                      alt={tech.name}
+                      class="w-full h-full object-contain p-1"
+                    />
+                  </div>
+                  <p class="text-sm font-semibold text-center text-base-content group-hover:text-primary transition-colors duration-300">
+                    {tech.name}
+                  </p>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        {/* DevOps */}
+        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div class="card-body p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-primary">
+                {'DevOps'}
+              </h3>
+            </div>
+
+            <div class="divider mt-0 mb-6"></div>
+
+            <div class="flex flex-wrap justify-center gap-6">
+              for (const tech of techStacks.devops) {
+                <div class="flex flex-col items-center gap-3 p-4 rounded-lg hover:bg-base-200 transition-all duration-300 group min-w-28">
+                  <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <img 
+                      src={tech.icon} 
+                      alt={tech.name}
+                      class="w-full h-full object-contain p-1"
+                    />
+                  </div>
+                  <p class="text-sm font-semibold text-center text-base-content group-hover:text-primary transition-colors duration-300">
+                    {tech.name}
+                  </p>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Note */}
+      <div class="text-center mt-12">
+        <div class="alert bg-base-100 shadow-lg max-w-3xl mx-auto border-primary/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-primary flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-sm text-base-content/80">
+            {'Our tech stack is continuously evolving to incorporate the latest innovations and best practices in software development'}
+          </span>
+        </div>
+      </div>
     </div>
+  </div>
 }

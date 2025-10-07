@@ -50,7 +50,7 @@ export component Prediction(props: {data: any}) {
                   {parseInt(@result.curency_price).toLocaleString()}
                 </span>
                 <span class="text-3xl md:text-4xl font-bold text-primary">
-                  {@result.currency}
+                  {@result.currency || "Loading..."}
                 </span>
               </div>
             </div>

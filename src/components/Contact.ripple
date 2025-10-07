@@ -1,4 +1,31 @@
+import { track } from 'ripple';
+import Notify from 'notifier-mycin';
+
 export component Contact() {
+    const name = track("");
+    const email = track("");
+    const phone = track("");
+    const message = track("");
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      if(@name == "" && @email == "" && @message == "") {
+        Notify.warning('Please fill in all the required fields');
+        return;
+      } else if(@name == "") {
+        Notify.warning('Please enter your name');
+        return;
+      }
+      else if(@email == "") {
+        Notify.warning('Please enter your email');
+        return;
+      }
+      else if(@message == "") {
+        Notify.warning('Please enter your message');
+        return;
+      }
+    }
+
     <div class="py-16 md:py-24" data-theme="sunset">
       <div class="container mx-auto px-4">
         {/* Section Header */}
@@ -14,7 +41,7 @@ export component Contact() {
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Form */}
-          <div class="card bg-base-100 shadow-xl">
+          <form class="card bg-base-100 shadow-xl">
             <div class="card-body p-6 md:p-8">
               <h3 class="text-2xl font-bold text-primary mb-6">
                 {'Send Us a Message'}
@@ -31,6 +58,7 @@ export component Contact() {
                     type="text" 
                     placeholder="Enter your full name" 
                     class="input input-bordered input-primary w-full focus:outline-offset-0"
+                    onInput={(e) => @name = (e.target as HTMLInputElement).value}
                   />
                 </div>
 
@@ -44,6 +72,7 @@ export component Contact() {
                     type="email" 
                     placeholder="your.email@example.com" 
                     class="input input-bordered input-primary w-full focus:outline-offset-0"
+                    onInput={(e) => @email = (e.target as HTMLInputElement).value}
                   />
                 </div>
 
@@ -57,6 +86,7 @@ export component Contact() {
                     type="tel" 
                     placeholder="+880 1XXX-XXXXXX" 
                     class="input input-bordered input-primary w-full focus:outline-offset-0"
+                    onInput={(e) => @phone = (e.target as HTMLInputElement).value}
                   />
                 </div>
 
@@ -69,6 +99,7 @@ export component Contact() {
                   <textarea 
                     placeholder="Tell us about your project or inquiry..." 
                     class="textarea textarea-bordered textarea-primary h-32 w-full focus:outline-offset-0 resize-none"
+                    onInput={(e) => @message = (e.target as HTMLInputElement).value}
                   ></textarea>
                   <label class="label">
                     <span class="label-text-alt text-base-content/60">{'Minimum 10 characters'}</span>
@@ -76,7 +107,7 @@ export component Contact() {
                 </div>
 
                 {/* Submit Button */}
-                <button class="btn btn-primary btn-block btn-lg shadow-lg hover:shadow-xl transition-all mt-6">
+                <button type="submit" onClick={(e) => handleSubmit(e)} class="btn btn-primary btn-block btn-lg shadow-lg hover:shadow-xl transition-all mt-6">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -84,7 +115,7 @@ export component Contact() {
                 </button>
               </div>
             </div>
-          </div>
+          </form>
 
           {/* Contact Information */}
           <div class="space-y-6">

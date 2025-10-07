@@ -3,6 +3,7 @@ import { effect, track } from 'ripple';
 import { Prediction } from './Prediction.ripple';
 import { Notes } from './Notes.ripple';
 import Preprocessor from '../utils/Preprocessor';
+import Notify from 'notifier-mycin';
 
 async function getDefaultCurrency(): Promise<string> {
 	try {
@@ -46,6 +47,23 @@ export component Form() {
 		e.preventDefault();
 		const currencySelect = document.getElementById('currency') as HTMLSelectElement | null;
 		@currency = currencySelect.value;
+		if (@name === '' && @softwarename === '' && @numUsers === '' && @timelineMonths === '') {
+			Notify.warning('Please fill in all the required fields');
+			return;
+		} else if (@name === '') {
+			Notify.warning('Please enter your name');
+			return;
+		} else if (@softwarename === '') {
+			Notify.warning('Please enter software name');
+			return;
+		} else if (@numUsers === '') {
+			Notify.warning('Please enter number of users');
+			return;
+		} else if (@timelineMonths === '') {
+			Notify.warning('Please select timeline months');
+			return;
+		}
+
 		@formData = {
 			name: @name,
 			softwarename: @softwarename,
@@ -68,6 +86,7 @@ export component Form() {
 			},
 			currency: @currency,
 		};
+		console.log('formData', @formData);
 		const preprocessor = new Preprocessor(@formData);
 		@finalData = preprocessor.transform();
 		@isSubmitted = true;
@@ -98,12 +117,12 @@ export component Form() {
 							/* Unknown: JSXEmptyExpression */
 							/* Basic Information */
 							<span class='label-text font-semibold'>{'Name'}</span></label>
-							<input type='text' name='name' onInput={(e) => @name = e.target as HTMLInputElement.value} placeholder='Enter your name' class='input input-bordered input-primary w-full focus:input-primary' required />
+							<input type='text' name='name' onInput={(e) => @name = (e.target as HTMLInputElement).value} placeholder='Enter your name' class='input input-bordered input-primary w-full focus:input-primary' required />
 						</div>
 
 						<div class='form-control'>
 							<label class='label'><span class='label-text font-semibold'>{'Software Name'}</span></label>
-							<input type='text' name='softwarename' onInput={(e) => @softwarename = e.target as HTMLInputElement.value} placeholder='Enter software name' class='input input-bordered input-primary w-full focus:input-primary' />
+							<input type='text' name='softwarename' onInput={(e) => @softwarename = (e.target as HTMLInputElement).value} placeholder='Enter software name' class='input input-bordered input-primary w-full focus:input-primary' />
 						</div>
 					</div>
 					{/* Unknown: JSXEmptyExpression */}
@@ -116,7 +135,7 @@ export component Form() {
 							/* Unknown: JSXEmptyExpression */
 							/* Software Configuration */
 							<span class='label-text font-semibold'>{'Software Type'}</span></label>
-							<select name='data.softwareType' onChange={(e) => @softwareType = e.target as HTMLInputElement.value} class='select select-bordered select-primary w-full'>
+							<select name='data.softwareType' onChange={(e) => @softwareType = (e.target as HTMLInputElement).value} class='select select-bordered select-primary w-full'>
 								<option value='Web' selected>{'Web'}</option>
 								<option value='Desktop'>{'Desktop'}</option>
 								<option value='Mobile'>{'Mobile'}</option>
@@ -126,7 +145,7 @@ export component Form() {
 
 						<div class='form-control'>
 							<label class='label'><span class='label-text font-semibold'>{'Industry Domain'}</span></label>
-							<select name='data.industryDomain' onChange={(e) => @industryDomain = e.target as HTMLInputElement.value} class='select select-bordered select-primary w-full'>
+							<select name='data.industryDomain' onChange={(e) => @industryDomain = (e.target as HTMLInputElement).value} class='select select-bordered select-primary w-full'>
 								<option value='Ecommerce'>{'Ecommerce'}</option>
 								<option value='Travel'>{'Travel'}</option>
 								<option value='Hotel_Management'>{'Hotel Management'}</option>
@@ -151,12 +170,12 @@ export component Form() {
 							/* Unknown: JSXEmptyExpression */
 							/* Market Details */
 							<span class='label-text font-semibold'>{'Number of Users'}</span></label>
-							<input type='text' name='data.numUsers' placeholder='Expected user count' onInput={(e) => @numUsers = e.target as HTMLInputElement.value} class='input input-bordered input-primary w-full' />
+							<input type='text' name='data.numUsers' placeholder='ex: 1-100' onInput={(e) => @numUsers = (e.target as HTMLInputElement).value} class='input input-bordered input-primary w-full' />
 						</div>
 
 						<div class='form-control'>
 							<label class='label'><span class='label-text font-semibold'>{'Target Market'}</span></label>
-							<select name='data.targetMarket' class='select select-bordered select-primary w-full' onChange={(e) => @targetMarket = e.target as HTMLInputElement.value}>
+							<select name='data.targetMarket' class='select select-bordered select-primary w-full' onChange={(e) => @targetMarket = (e.target as HTMLInputElement).value}>
 								<option value='Local'>{'Local'}</option>
 								<option value='Global'>{'Global'}</option>
 								<option value='Both'>{'Both'}</option>
@@ -173,7 +192,7 @@ export component Form() {
 							/* Unknown: JSXEmptyExpression */
 							/* Dashboard & Management */
 							<span class='label-text font-semibold'>{'Admin Dashboard'}</span></label>
-							<select name='data.adminDashboard' class='select select-bordered select-primary w-full' onChange={(e) => @adminDashboard = e.target as HTMLInputElement.value}>
+							<select name='data.adminDashboard' class='select select-bordered select-primary w-full' onChange={(e) => @adminDashboard = (e.target as HTMLInputElement).value}>
 								<option value='Null'>{'Null'}</option>
 								<option value='Basic'>{'Basic'}</option>
 								<option value='Advanced'>{'Advanced'}</option>
@@ -186,7 +205,7 @@ export component Form() {
 								<span class='label-text font-semibold'>{'Content Management'}</span>
 								<span class='label-text-alt text-primary'>{'Multi-select'}</span>
 							</label>
-							<select name='data.contentManagement' multiple class='select select-bordered select-primary w-full h-32' onChange={(e) => @contentManagement = e.target as HTMLInputElement.value}>
+							<select name='data.contentManagement' multiple class='select select-bordered select-primary w-full h-32' onChange={(e) => @contentManagement = (e.target as HTMLInputElement).value}>
 								<option value='Null'>{'Null'}</option>
 								<option value='Workflow'>{'Workflow'}</option>
 								<option value='Pages_and_Media'>{'Pages and Media'}</option>
@@ -208,7 +227,7 @@ export component Form() {
 							<span class='label-text font-semibold'>{'Extra Features'}</span>
 							<span class='label-text-alt text-primary'>{'Multi-select'}</span>
 						</label>
-						<select name='data.extraFeatures' multiple class='select select-bordered select-primary w-full h-40' onChange={(e) => @extraFeatures = e.target as HTMLInputElement.value}>
+						<select name='data.extraFeatures' multiple class='select select-bordered select-primary w-full h-40' onChange={(e) => @extraFeatures = (e.target as HTMLInputElement).value}>
 							<option value='Null'>{'Null'}</option>
 							<option value='Search_and_Filter'>{'Search and Filter'}</option>
 							<option value='AI_ML_Module'>{'AI/ML Module'}</option>
@@ -234,7 +253,7 @@ export component Form() {
 								<span class='label-text font-semibold'>{'Third Party Services'}</span>
 								<span class='label-text-alt text-primary'>{'Multi-select'}</span>
 							</label>
-							<select name='data.thirdPartyService' multiple class='select select-bordered select-primary w-full h-32' onChange={(e) => @thirdPartyService = e.target as HTMLInputElement.value}>
+							<select name='data.thirdPartyService' multiple class='select select-bordered select-primary w-full h-32' onChange={(e) => @thirdPartyService = (e.target as HTMLInputElement).value}>
 								<option value='Null'>{'Null'}</option>
 								<option value='Analytics'>{'Analytics'}</option>
 								<option value='Payment_Gateway'>{'Payment Gateway'}</option>
@@ -245,7 +264,7 @@ export component Form() {
 
 						<div class='form-control'>
 							<label class='label'><span class='label-text font-semibold'>{'Authentication'}</span></label>
-							<select name='data.authentication' class='select select-bordered select-primary w-full' onChange={(e) => @authentication = e.target as HTMLInputElement.value}>
+							<select name='data.authentication' class='select select-bordered select-primary w-full' onChange={(e) => @authentication = (e.target as HTMLInputElement).value}>
 								<option value='Null'>{'Null'}</option>
 								<option value='Basic'>{'Basic'}</option>
 								<option value='Social'>{'Social'}</option>
@@ -264,7 +283,7 @@ export component Form() {
 							/* Unknown: JSXEmptyExpression */
 							/* Design & Performance */
 							<span class='label-text font-semibold'>{'Data Migration'}</span></label>
-							<select name='data.dataMigration' class='select select-bordered select-primary w-full' onChange={(e) => @dataMigration = e.target as HTMLInputElement.value}>
+							<select name='data.dataMigration' class='select select-bordered select-primary w-full' onChange={(e) => @dataMigration = (e.target as HTMLInputElement).value}>
 								<option value='Null'>{'Null'}</option>
 								<option value='No'>{'No'}</option>
 								<option value='Yes'>{'Yes'}</option>
@@ -273,7 +292,7 @@ export component Form() {
 
 						<div class='form-control'>
 							<label class='label'><span class='label-text font-semibold'>{'UI/UX Design'}</span></label>
-							<select name='data.uiuxDesign' class='select select-bordered select-primary w-full' onChange={(e) => @uiuxDesign = e.target as HTMLInputElement.value}>
+							<select name='data.uiuxDesign' class='select select-bordered select-primary w-full' onChange={(e) => @uiuxDesign = (e.target as HTMLInputElement).value}>
 								<option value='Basic'>{'Basic'}</option>
 								<option value='Advanced'>{'Advanced'}</option>
 								<option value='Custom'>{'Custom'}</option>
@@ -282,7 +301,7 @@ export component Form() {
 
 						<div class='form-control'>
 							<label class='label'><span class='label-text font-semibold'>{'Performance'}</span></label>
-							<select name='data.performance' class='select select-bordered select-primary w-full' onChange={(e) => @performance = e.target as HTMLInputElement.value}>
+							<select name='data.performance' class='select select-bordered select-primary w-full' onChange={(e) => @performance = (e.target as HTMLInputElement).value}>
 								<option value='Basic'>{'Basic'}</option>
 								<option value='Medium'>{'Medium'}</option>
 								<option value='High'>{'High'}</option>
@@ -299,7 +318,7 @@ export component Form() {
 							/* Unknown: JSXEmptyExpression */
 							/* Security & Availability */
 							<span class='label-text font-semibold'>{'Security'}</span></label>
-							<select name='data.security' class='select select-bordered select-primary w-full' onChange={(e) => @security = e.target as HTMLInputElement.value}>
+							<select name='data.security' class='select select-bordered select-primary w-full' onChange={(e) => @security = (e.target as HTMLInputElement).value}>
 								<option value='Null'>{'Null'}</option>
 								<option value='Standard'>{'Standard'}</option>
 								<option value='High'>{'High'}</option>
@@ -308,7 +327,7 @@ export component Form() {
 
 						<div class='form-control'>
 							<label class='label'><span class='label-text font-semibold'>{'Availability'}</span></label>
-							<select name='data.availability' class='select select-bordered select-primary w-full' onChange={(e) => @availability = e.target as HTMLInputElement.value}>
+							<select name='data.availability' class='select select-bordered select-primary w-full' onChange={(e) => @availability = (e.target as HTMLInputElement).value}>
 								<option value='Normal'>{'Normal'}</option>
 								<option value='Always'>{'Always'}</option>
 							</select>
@@ -321,7 +340,7 @@ export component Form() {
 						/* Unknown: JSXEmptyExpression */
 						/* Basic Information */
 						<span class='label-text font-semibold'>{'Timeline Months'}</span></label>
-						<input type='text' name='name' onInput={(e) => @timelineMonths = e.target as HTMLInputElement.value} placeholder='Enter timeline months' class='input input-bordered input-primary w-full focus:input-primary' />
+						<input type='text' name='name' onInput={(e) => @timelineMonths = (e.target as HTMLInputElement).value} placeholder='ex: 1-3 or 4' class='input input-bordered input-primary w-full focus:input-primary' />
 					</div>
 					{/* Unknown: JSXEmptyExpression */}
 					<div class='form-control'>
@@ -332,7 +351,7 @@ export component Form() {
 						/* Unknown: JSXEmptyExpression */
 						/* Currency */
 						<span class='label-text font-semibold'>{'Currency'}</span></label>
-						<select name='data.availability' class='select select-bordered select-primary w-full' id='currency' onChange={(e) => @currency = e.target as HTMLInputElement.value}>for (const currency of Currencies) {
+						<select name='data.availability' class='select select-bordered select-primary w-full' id='currency' onChange={(e) => @currency = (e.target as HTMLInputElement).value}>for (const currency of Currencies) {
 							if (currency === @defaultCurrency) {
 								<option value={currency} selected>{currency}</option>
 							} else {

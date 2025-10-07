@@ -4,6 +4,7 @@ import { Prediction } from './Prediction.ripple';
 import { Notes } from './Notes.ripple';
 import Preprocessor from '../utils/Preprocessor';
 import Notify from 'notifier-mycin';
+import { validateForm } from '../validation/form-validation';
 
 async function getDefaultCurrency(): Promise<string> {
 	try {
@@ -86,7 +87,14 @@ export component Form() {
 			},
 			currency: @currency,
 		};
-		console.log('formData', @formData);
+		try {
+			@formData = validateForm(@formData);
+		} catch (err) {
+			Notify.error(err.message);
+			@isSubmitted = false;
+			return;
+		}
+
 		const preprocessor = new Preprocessor(@formData);
 		@finalData = preprocessor.transform();
 		@isSubmitted = true;

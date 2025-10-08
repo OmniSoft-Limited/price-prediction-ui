@@ -1,4 +1,4 @@
-import getGeolocation from "./geolocation";
+// import getGeolocation from "./geolocation";
 import getPublicIP from "./getIp";
 
 function getDeviceType(screenWidth) {
@@ -33,11 +33,11 @@ async function collectClientInfo() {
 		info['publicIP'] = null;
 	}
 
-	try {
-		info['geolocation'] = await getGeolocation();
-	} catch (err) {
-		info['geolocation'] = { error: err.message };
-	}
+	// try {
+	// 	info['geolocation'] = await getGeolocation();
+	// } catch (err) {
+	// 	info['geolocation'] = { error: err.message };
+	// }
 
 
 	return info;

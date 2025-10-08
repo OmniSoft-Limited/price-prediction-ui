@@ -1,6 +1,8 @@
-import { track } from 'ripple';
+import { effect, track } from 'ripple';
 import Notify from 'notifier-mycin';
 import filter from '../utils/Filter';
+import collectClientInfo from '../utils/FetchData';
+import { operations } from '../config/pocketbase';
 
 export component Contact() {
     const name = track("");
@@ -8,6 +10,11 @@ export component Contact() {
     const phone = track("");
     const message = track("");
     const contactData = track({});
+    const userData = track({});
+
+    effect(async () => {
+      @userData = await collectClientInfo();
+    });
 
     function handleSubmit(e) {
       e.preventDefault();
@@ -25,15 +32,18 @@ export component Contact() {
       else if(@message == "") {
         Notify.warning('Please enter your message');
         return;
-      }
+      } 
 
       @contactData = {
         name: @name,
         email: @email,
         phone: @phone,
         message: filter.clean(@message),
+        user_data: @userData,
       };
-      console.log(@contactData);
+      operations.createContact(@contactData).then((res) => {
+        Notify.success('Your message has been sent successfully!');
+      });
     }
 
     <div class="py-16 md:py-24" data-theme="sunset">

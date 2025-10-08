@@ -9,7 +9,7 @@ export component Prediction(props: {data: any}) {
         currency: "",
         curency_price: ""
     });
-
+    
     effect(async () => {
       try {
         @data = props.data;

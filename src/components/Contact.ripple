@@ -1,11 +1,13 @@
 import { track } from 'ripple';
 import Notify from 'notifier-mycin';
+import filter from '../utils/Filter';
 
 export component Contact() {
     const name = track("");
     const email = track("");
     const phone = track("");
     const message = track("");
+    const contactData = track({});
 
     function handleSubmit(e) {
       e.preventDefault();
@@ -24,6 +26,14 @@ export component Contact() {
         Notify.warning('Please enter your message');
         return;
       }
+
+      @contactData = {
+        name: @name,
+        email: @email,
+        phone: @phone,
+        message: filter.clean(@message),
+      };
+      console.log(@contactData);
     }
 
     <div class="py-16 md:py-24" data-theme="sunset">

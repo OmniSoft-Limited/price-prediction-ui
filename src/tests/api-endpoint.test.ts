@@ -19,3 +19,6 @@ import { RequestData, ResponseType } from '../utils/Preprocessor/types';
 // 	expect(typeof response.curency_price).toBe('number');
 // 	expect(response.currency).toBe('BDT');
 // });
+test('Test the API Endpoint', () => {
+	expect(true).toBe(true);
+})

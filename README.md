@@ -1,49 +1,96 @@
-# Ripple Basic Template
 
-A minimal Ripple application template with TypeScript and Vite.
+# 🖥️ Price Prediction ML Frontend
 
-## Getting Started
+A sleek, interactive, and AI-powered UI for predicting software prices. Built for speed, style, and accuracy — powered by ML, modern web tech, and a pinch of developer magic.
 
-1. Install dependencies:
+---
 
-    ```bash
-    npm install # or pnpm or yarn
-    ```
+## 🚀 Features
 
-2. Start the development server:
+* **Real-time price predictions** using ONNX ML models.
+* **Interactive UI** built with **TypeScript** and **Ripple framework**.
+* **Beautiful styling** with **Tailwind CSS** and **DaisyUI** components.
+* **Content safety**: automatically crawls and filters bad words in user input.
+* **Backend integration** via **Pocketbase** for secure and lightweight database management.
+* **Testing** with **Jest** for robust functionality.
+* **CI/CD Ready**: fully compatible with **Jenkins pipelines**.
 
-    ```bash
-    npm run dev
-    ```
+---
 
-3. Build for production:
-    ```bash
-    npm run build
-    ```
+## 🛠️ Tech Stack
 
-## Code Formatting
+| Layer          | Technology                  |
+| -------------- | --------------------------- |
+| Frontend       | TypeScript, Ripple          |
+| Styling        | Tailwind CSS, DaisyUI       |
+| Backend        | Pocketbase (lightweight DB) |
+| ML Integration | ONNX runtime                |
+| Testing        | Jest                        |
+| CI/CD          | Jenkins                     |
+| Transpiling    | Babel                       |
 
-This template includes Prettier with the Ripple plugin for consistent code formatting.
+---
 
-### Available Commands
+## 🎨 UI Overview
 
-- `npm run format` - Format all files
-- `npm run format:check` - Check if files are formatted correctly
+* **Form Input**: Enter software details for instant price prediction.
+* **Prediction Output**: Shows recommended price along with model confidence.
+* **Data Validation**: Prevents bad word inputs using a simple web crawling filter.
+* **Responsive Design**: Works perfectly on desktop and mobile devices.
 
-### Configuration
+---
 
-Prettier is configured in `.prettierrc` with the following settings:
+## ⚡ Installation
 
-- Uses tabs for indentation
-- Single quotes for strings
-- 100 character line width
-- Includes the `prettier-plugin-ripple` for `.ripple` file formatting
+```bash
+# Clone the repository
+git clone https://github.com/OmniSoft-Limited/price-prediction-ui.git
+cd price-ml-frontend
 
-### VS Code Integration
+# Install dependencies
+npm install
 
-For the best development experience, install the [Prettier VS Code extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and the [Ripple VS Code extension](https://marketplace.visualstudio.com/items?itemName=ripplejs.ripple-vscode-plugin).
+# Start the development server
+npm run dev
+```
 
-## Learn More
+---
 
-- [Ripple Documentation](https://github.com/trueadm/ripple)
-- [Vite Documentation](https://vitejs.dev/)
+## 🧪 Testing
+
+Run tests with Jest:
+
+```bash
+npm run test
+```
+
+---
+
+## 🔧 CI/CD
+
+Fully compatible with Jenkins pipelines. Example Jenkinsfile snippet:
+
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Install') { steps { sh 'npm install' } }
+        stage('Build') { steps { sh 'npm run build' } }
+        stage('Test') { steps { sh 'npm run test' } }
+        stage('Deploy') { steps { echo 'Deploy to server...' } }
+    }
+}
+```
+
+
+## 💡 Notes
+
+* Make sure **ONNX model** is placed in the `/models` folder.
+* Pocketbase should be running locally or remotely for full functionality.
+* Fully responsive and optimized for performance with modern browsers.
+
+---
+
+## ⚖️ License
+
+MIT License. Use, modify, and deploy freely.

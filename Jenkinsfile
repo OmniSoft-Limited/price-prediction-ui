@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                sh 'bun run test'
+                bat 'bun run test'
             }
         }
     }

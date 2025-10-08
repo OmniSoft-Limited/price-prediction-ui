@@ -41,7 +41,7 @@ export component Header() {
 				</div>
 				{/* Unknown: JSXEmptyExpression */}
 				<a class='btn btn-ghost text-2xl font-bold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent'>
-					<img src='/public/favicon.ico' alt='logo' class='h-10 w-10 mr-2' />
+					<img src='/favicon.ico' alt='logo' class='h-10 w-10 mr-2' />
 					{'Omnisoft'}
 				</a>
 			</div>

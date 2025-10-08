@@ -3,3 +3,10 @@
 @plugin "daisyui" {
     themes: all
 };
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+    scroll-padding-top: 5rem;
+  }
+}

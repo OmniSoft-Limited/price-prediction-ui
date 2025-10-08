@@ -8,16 +8,22 @@ import { Members } from './components/Members.ripple';
 import { TechStack } from './components/TechStack.ripple';
 
 export component App() {
-    <div>
-        <Header />
-        <div>
-            <Form />
-        </div>
-        <About />
-        {/* <Members /> */} // Maybe Later
-        <hr />
-        <Contact />
-        <TechStack />
-        <Footer />
-    </div>
+    function scrollToTop() {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
+	<div>
+		<Header />
+		<div id='form'><Form /></div>
+		<div id='about'><About /></div>
+		<hr />
+		<div id='contact'><Contact /></div>
+		<div id='tech-stack'><TechStack /></div>
+		<div class=''><Footer /></div>
+        <button onClick={scrollToTop}
+			class="btn btn-primary btn-circle fixed bottom-6 text-3xl right-6 shadow-lg z-50"
+			aria-label="Back to Top"
+		>
+			{'↑'}
+		</button>
+	</div>
 }

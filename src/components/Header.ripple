@@ -20,19 +20,19 @@ export component Header() {
 							</a>
 						</li>
 						<li>
-							<a class='hover:bg-primary hover:text-primary-content transition-colors'>
+							<a class='hover:bg-primary hover:text-primary-content transition-colors' href="#form">
 								<svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' /></svg>
 								{'AI'}
 							</a>
 						</li>
 						<li>
-							<a class='hover:bg-primary hover:text-primary-content transition-colors'>
+							<a class='hover:bg-primary hover:text-primary-content transition-colors' href='#about'>
 								<svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>
 								{'About'}
 							</a>
 						</li>
 						<li>
-							<a class='hover:bg-primary hover:text-primary-content transition-colors'>
+							<a class='hover:bg-primary hover:text-primary-content transition-colors' href='#contact'>
 								<svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' /></svg>
 								{'Contact'}
 							</a>
@@ -48,28 +48,28 @@ export component Header() {
 			{/* Unknown: JSXEmptyExpression */}
 			<div class='navbar-center hidden lg:flex'><ul class='menu menu-horizontal px-4 gap-6'>
 				<li>
-					<a class='btn btn-ghost text-lg font-semibold hover:scale-110 hover:bg-primary hover:text-primary-content transition-all duration-300 ease-out'>
+					<a href="#" class='btn btn-ghost text-lg font-semibold hover:scale-110 hover:bg-primary hover:text-primary-content transition-all duration-300 ease-out'>
 						<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 mr-2' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' /></svg>
 						{'Home'}
 					</a>
 				</li>
 
 				<li>
-					<a class='btn btn-ghost text-lg font-semibold hover:scale-110 hover:bg-primary hover:text-primary-content transition-all duration-300 ease-out'>
+					<a href="#form" class='btn btn-ghost text-lg font-semibold hover:scale-110 hover:bg-primary hover:text-primary-content transition-all duration-300 ease-out'>
 						<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 mr-2' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' /></svg>
 						{'AI'}
 					</a>
 				</li>
 
 				<li>
-					<a class='btn btn-ghost text-lg font-semibold hover:scale-110 hover:bg-primary hover:text-primary-content transition-all duration-300 ease-out'>
+					<a href="#about" class='btn btn-ghost text-lg font-semibold hover:scale-110 hover:bg-primary hover:text-primary-content transition-all duration-300 ease-out'>
 						<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 mr-2' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>
 						{'About'}
 					</a>
 				</li>
 
 				<li>
-					<a class='btn btn-ghost text-lg font-semibold hover:scale-110 hover:bg-primary hover:text-primary-content transition-all duration-300 ease-out'>
+					<a href="#contact" class='btn btn-ghost text-lg font-semibold hover:scale-110 hover:bg-primary hover:text-primary-content transition-all duration-300 ease-out'>
 						<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 mr-2' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' /></svg>
 						{'Contact'}
 					</a>
@@ -81,11 +81,6 @@ export component Header() {
 					<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9' /></svg>
 					<span class='badge badge-xs badge-primary indicator-item' />
 				</div></button>
-
-				<button class='btn btn-primary shadow-lg hover:shadow-xl transition-all'>
-					<svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1' /></svg>
-					{'Get Started'}
-				</button>
 			</div>
 		</div>
 		{/* Unknown: JSXEmptyExpression */}
